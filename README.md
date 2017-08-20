@@ -1,4 +1,4 @@
-# Betsson Group: Movies Application
+# Movies Application
 **Version: 1.2**
 ## Scenario:
 
