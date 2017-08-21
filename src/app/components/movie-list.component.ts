@@ -8,6 +8,6 @@ import { Movie } from '../models/movie.model';
   `,
     styles: []
 })
-export class BookPreviewListComponent {
+export class MovieListComponent {
     @Input() movies: Movie[];
 }
