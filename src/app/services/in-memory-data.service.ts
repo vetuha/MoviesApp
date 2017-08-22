@@ -4,7 +4,7 @@ import { Movie } from "../models/movie.model";
 
 export class InMemoryDataService implements InMemoryDbService {
     createDb() {
-        const movies: Movie[] = [
+        let movies: Movie[] = [
             {
                 id: 1,
                 key: "deadpool",

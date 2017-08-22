@@ -6,7 +6,7 @@ import { Movie } from '../models/movie.model';
     templateUrl: './movie-table.component.html',
     styles: []
 })
-export class MovieTableTileComponent {
+export class MovieTableComponent {
     @Input() movies: Movie[];
     
 }

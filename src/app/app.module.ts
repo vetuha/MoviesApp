@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
@@ -9,6 +11,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
 import { AppComponent } from './containers/app';
+import { ComponentsModule } from './components/index.module';
 import { CollectionPageComponent } from './containers/movies-collection-page';
 import { MovieService } from './services/movie.service';
 import { MovieEffects } from './effects/movie.effects';
@@ -19,12 +22,13 @@ import { routes } from './routes';
 @NgModule({
   imports: [
     BrowserModule,
+    HttpModule,
+    ComponentsModule,
+    CommonModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     RouterModule.forRoot(routes, { useHash: true }),
-    StoreModule.forRoot(reducers, {
-      //place for future reducers
-    }),
-    EffectsModule.forFeature([MovieEffects]),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([MovieEffects]),
   ],
   declarations: [
     AppComponent,

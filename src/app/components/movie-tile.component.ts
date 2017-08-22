@@ -10,6 +10,8 @@ import { Movie } from '../models/movie.model';
 export class MovieTileComponent {
     @Input() movie: Movie;
 
+    private imgPath = '../assets/movie-covers/';
+
     get id() {
         return this.movie.id;
     }
@@ -19,7 +21,7 @@ export class MovieTileComponent {
     }
 
     get thumbnail() {
-        return this.movie.img;
+        return this.imgPath + this.movie.img;
     }
 
     get rate() {

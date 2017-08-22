@@ -6,6 +6,7 @@ import { MovieDetailComponent } from './movie-detail.component';
 import { MovieTableListComponent } from './movie-table-list.component';
 import { MovieTableTileComponent } from './movie-table-tile.component';
 import { MovieTileComponent } from './movie-tile.component';
+import { MovieTableComponent } from './movie-table.component';
 import { TableTopMenuComponent } from './topmenu.component';
 import { NavBarComponent } from './navbar.component';
 import { LayoutComponent } from './layout.component';
@@ -18,6 +19,7 @@ export const COMPONENTS = [
   MovieTableListComponent,
   MovieTableTileComponent,
   MovieTileComponent,
+  MovieTableComponent,
   TableTopMenuComponent,
   NavBarComponent,
   LayoutComponent
