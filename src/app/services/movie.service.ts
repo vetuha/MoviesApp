@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 import { Movie } from '../models/movie.model';
 
@@ -12,24 +13,15 @@ export class MovieService {
 
   constructor(private http: Http) { }
 
-  getMovies(): Promise<Movie[]> {
+  getMovies(): Observable<Movie[]> {
     return this.http.get(this.moviesUrl)
-      .toPromise()
-      .then(response => response.json().data as Movie[])
-      .catch(this.handleError);
+      .map(res => res.json().items || []);
   }
 
-  getMovie(id: number): Promise<Movie> {
+  getMovie(id: number): Observable<Movie> {
     const url = `${this.moviesUrl}/${id}`;
     return this.http.get(url)
-      .toPromise()
-      .then(response => response.json().data as Movie)
-      .catch(this.handleError);
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
+      .map(res => res.json());
   }
 
 }

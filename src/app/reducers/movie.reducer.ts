@@ -5,7 +5,7 @@ import * as movie from '../actions/movie.action';
 export interface State {
     ids: number[];
     entities: { [id: number]: Movie };
-    selectedMovieId: string | null;
+    selectedMovieId: number | null;
 }
 
 export const initialState: State = {
