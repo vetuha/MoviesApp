@@ -1,0 +1,21 @@
+<li>
+    <a [routerLink]="['/movie', id]">
+        <div>
+            <div class="rate">
+                <span>Rate: </span>
+                <span>{{ rate }}</span>
+            </div>
+            <div class="image">
+                <img *ngIf="thumbnail" [src]="thumbnail" />
+            </div>
+            <div class="title">
+                <span>Title: </span>
+                <span>{{ title }}</span>
+            </div>
+            <div class="title">
+                <span>Genres: </span>
+                <span>{{ genres }}</span>
+            </div>
+        </div>
+    </a>
+</li>
