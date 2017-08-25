@@ -1,21 +1,21 @@
-<li>
-    <a [routerLink]="['/movie', id]">
-        <div>
-            <div class="rate">
-                <span>Rate: </span>
-                <span>{{ rate }}</span>
-            </div>
-            <div class="image">
-                <img *ngIf="thumbnail" [src]="thumbnail" />
-            </div>
-            <div class="title">
-                <span>Title: </span>
-                <span>{{ title }}</span>
-            </div>
-            <div class="title">
-                <span>Genres: </span>
-                <span>{{ genres }}</span>
-            </div>
+<li class="item c-article-tile col-md-11">
+    <article class="t-sass" itemscope itemtype="http://schema.org/Article">
+        <div class="header">
+            <a [routerLink]="['/movie', id]" class="movie-name">
+            {{title}}
+            </a>
+            <a class="rating">{{rate}}<i class="fa fa-star"></i></a>
         </div>
-    </a>
+
+        <div class="body">
+            <img class="img-fluid center-block" [src]="thumbnail"/>
+        </div>
+
+        <footer class="footer">
+            <span *ngFor="let genre of genres" class="genre badge badge-pill badge-default">{{genre}}</span>
+            <span datetime="2016-05-12T12:00" class="length" itemprop="datePublished">
+                {{ mLength | movieLength}}
+            </span>
+        </footer>
+    </article>
 </li>

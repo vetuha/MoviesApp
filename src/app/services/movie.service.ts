@@ -24,4 +24,10 @@ export class MovieService {
       .map(res => res.json());
   }
 
+  searchMovies(q: string): Observable<Movie[]> {
+    const url = `${this.moviesUrl}/?name=${q}`;
+    return this.http.get(url)
+      .map(res => res.json().data || []);
+  }
+
 }

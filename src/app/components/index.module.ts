@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { MovieDetailComponent } from './movie-detail.component';
 import { MovieTableListComponent } from './movie-table-list.component';
 import { MovieTableTileComponent } from './movie-table-tile.component';
 import { MovieTileComponent } from './movie-tile.component';
-import { MovieTableComponent } from './movie-table.component';
-import { TableTopMenuComponent } from './topmenu.component';
-import { NavBarComponent } from './navbar.component';
+import { TopMenuComponent } from './topmenu.component';
 import { LayoutComponent } from './layout.component';
+import { LeftMenuComponent } from './leftmenu.component';
 
 import { PipesModule } from '../pipes/index.module';
 
@@ -19,10 +20,9 @@ export const COMPONENTS = [
   MovieTableListComponent,
   MovieTableTileComponent,
   MovieTileComponent,
-  MovieTableComponent,
-  TableTopMenuComponent,
-  NavBarComponent,
-  LayoutComponent
+  TopMenuComponent,
+  LayoutComponent,
+  LeftMenuComponent
 ];
 
 @NgModule({
@@ -30,6 +30,8 @@ export const COMPONENTS = [
     CommonModule,
     RouterModule,
     PipesModule,
+    FormsModule,
+    NgbModule.forRoot()
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS

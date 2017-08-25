@@ -1,1 +1,20 @@
-<movie-tile *ngFor="let movie of movies" [movie]="movie"></movie-tile>
+<table class="table table-hover table-inverse">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Genres</th>
+            <th>Length</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let movie of movies" [routerLink]="['/movie', movie.id]">
+            <td>{{movie.name}}</td>
+            <td>
+                <span *ngFor="let genre of movie.genres" class="badge badge-default">{{genre}}</span>
+            </td>
+            <td>{{movie.length | movieLength}}</td>
+            <td>{{movie.rate}}</td>
+        </tr>
+    </tbody>
+</table>

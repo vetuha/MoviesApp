@@ -15,10 +15,10 @@ const initialState: State = {
 export function reducer(state = initialState, action: layout.Actions): State {
   switch (action.type) {
     case layout.CHANGE_VIEW:
-      return {
-        tableView: action.payload,
-        leftNavVisible: state.leftNavVisible
-      };
+      const view = action.payload;
+      return Object.assign({}, state, {
+        tableView: view
+      });
     case layout.TOOGLE_SIDELOCK:
       return {
         tableView: state.tableView,

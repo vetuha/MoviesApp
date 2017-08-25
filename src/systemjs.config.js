@@ -24,11 +24,16 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
 
       // other libraries
-      'rxjs':                      'npm:rxjs',
+      'rxjs': 'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
       '@ngrx/core': 'node_modules/@ngrx/core/bundles/core.umd.js',
       '@ngrx/store': 'node_modules/@ngrx/store/bundles/store.umd.js',
       '@ngrx/effects': 'node_modules/@ngrx/effects/bundles/effects.umd.js',
+      '@ng-bootstrap/ng-bootstrap': 'node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js',
+      'node_modules/ng2-slider-component': {
+        main: 'ng2-slider.component.system.js',
+        defaultExtension: 'system.js'
+      }
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

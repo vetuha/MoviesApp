@@ -13,6 +13,7 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { AppComponent } from './containers/app';
 import { ComponentsModule } from './components/index.module';
 import { CollectionPageComponent } from './containers/movies-collection-page';
+import { NotFoundPageComponent } from './containers/not-found-page';
 import { MovieService } from './services/movie.service';
 import { MovieEffects } from './effects/movie.effects';
 
@@ -26,13 +27,14 @@ import { routes } from './routes';
     ComponentsModule,
     CommonModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes, { useHash: false }),
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([MovieEffects]),
+    EffectsModule.forRoot([MovieEffects])
   ],
   declarations: [
     AppComponent,
-    CollectionPageComponent
+    CollectionPageComponent,
+    NotFoundPageComponent
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

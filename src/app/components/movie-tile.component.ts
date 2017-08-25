@@ -31,4 +31,8 @@ export class MovieTileComponent {
     get genres() {
         return this.movie.genres;
     }
+
+    get mLength() {
+        return this.movie.length;
+    }
 }

@@ -1,4 +1,6 @@
 $title-color: #369;
+$backgrnd-color: #252830;
+$footer-height: 60px;
 
 h1 {
   color: $title-color;
@@ -6,10 +8,28 @@ h1 {
   font-size: 250%;
 }
 
-body {
-  background-color: #252830;
+html {
+   position: relative;
+   min-height: 100%;
 }
 
+body {
+  background-color: $backgrnd-color;
+  margin-bottom: $footer-height;
+}
+
+.site-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  line-height: $footer-height; 
+  background-color: $backgrnd-color;
+}
+
+.text-center {
+    text-align: center!important;
+}
 
 /* make sidebar nav vertical */ 
 #sidebar {
@@ -96,4 +116,98 @@ body {
   }
 }
 
+/*tile styles*/
+.c-tile-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  .item {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 300px;
+    margin: 10px;
+  }
+}
 
+.c-article-tile {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255);
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .t-sass {
+  color: #0275d8;
+  }
+  .header, .body, .footer {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .header, .footer {
+    font-size: 80%;
+  }
+  .header {
+    padding-top: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+  }
+  .movie-name {
+    font-weight: bold;
+  }
+  .rating {
+    margin-left: auto;
+  }
+  .body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .footer {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-top: auto;
+    white-space: nowrap;
+    color: #949494;
+  }
+  .genre {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-right: 2px;
+  }
+  .length {
+    margin-left: auto;
+  }
+}
+
+/*badge styles*/
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+.badge-pill {
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+}
+
+.badge-default {
+  background-color: #636c72;
+}
+
+.pagination {
+margin: 0px !important;
+}

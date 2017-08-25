@@ -5,6 +5,7 @@ import * as movie from '../actions/movie.action';
 export interface State {
     loaded: boolean;
     loading: boolean;
+    searching: boolean;
     entities: Array<Movie>;
     count: number;
     page: number;
@@ -13,6 +14,7 @@ export interface State {
 export const initialState: State = {
     loaded: false,
     loading: false,
+    searching: false,
     entities: [],
     count: 0,
     page: 1
@@ -29,6 +31,12 @@ export function reducer(state = initialState, action: movie.Actions): State {
                 page: page == null ? state.page : page
             });
         }
+        case movie.SEARCH: {
+
+            return Object.assign({}, state, {
+                searching: true
+            });
+        }
         case movie.LOAD_SUCCESS: {
             const movies = action.payload;
 
@@ -39,13 +47,21 @@ export function reducer(state = initialState, action: movie.Actions): State {
                 count: movies.length
             });
         }
-
         case movie.LOAD_FAILURE: {
             return Object.assign({}, state, {
                 loaded: true,
                 loading: false,
                 entities: [],
                 count: 0
+            });
+        }
+        case movie.SEARCH_COMPLETE: {
+            const movies = action.payload;
+
+            return Object.assign({}, state, {
+                entities: movies,
+                count: movies.length,
+                page:1
             });
         }
         default:

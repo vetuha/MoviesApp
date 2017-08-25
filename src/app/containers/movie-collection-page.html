@@ -1,30 +1,18 @@
-<div class="col-md-3 col-xs-1 collapse in" id="sidebar">
-    <div class="list-group panel">
-        <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-search"></i> <span class="hidden-sm-down">Search</span> </a>
-        <div class="collapse" id="menu1">
-            <form class="form-inline list-group-item" data-parent="#menu1">
-                <div class="input-group">
-                    <input class="form-control" placeholder="Search" type="text">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <a href="#menu2" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-filter"></i> <span class="hidden-sm-down">Filters</span></a>
-        <div class="collapse" id="menu2">
-            <a href="#" class="list-group-item" data-parent="#menu2">2.1</a>
-            <a href="#" class="list-group-item" data-parent="#menu2"><i class="fa fa-star"></i> 2.2</a>
-        </div>
-    </div>
+<div class="col-md-3 col-xs-1 p-l-0 p-r-0 collapse in" id="sidebar">
+    <left-menu (search)="searchMovie($event)" (applyFilters)="applyFilters($event)" (resetFilters)="resetFilters($event)" (onViewChanged)="changeTableView($event)"></left-menu>
 </div>
-<div class="col-md-9 col-xs-11">
+<main class="col-md-9 col-xs-11 p-l-2 p-t-2">
     <a href="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-lg"></i></a>
     <hr>
     <div class="page-header">
         <h1>Movies Collection</h1>
     </div>
-    <movie-table [movies]="movies$ | async"></movie-table>
-</div>
+    <table-top-menu [count]="moviesCount$ | async" [page]="moviesPage$ | async" [loading]="moviesLoading$ | async" [tableView]="tableView$ | async" (onPageChanged)="onMoviesPageChanged($event)"></table-top-menu>
+    <!--<div [ngSwitch]="tableView$ | async">
+        <movie-table-list *ngSwitchCase="tableView$ == tableState.List" [movies]="movies$ | async"></movie-table-list>
+        <movie-table-tile *ngSwitchCase="tableView$ == tableState.Thumbnail" [movies]="movies$ | async"></movie-table-tile>
+    </div>-->
+    <div class="container">
+    <movie-table-tile  [movies]="movies$ | async"></movie-table-tile>
+    </div>
+</main>
