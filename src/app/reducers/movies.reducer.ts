@@ -1,5 +1,7 @@
 import { createSelector } from '@ngrx/store';
 import { Movie } from '../models/movie.model';
+import { SearchResponse } from '../models/response.model';
+import { SearchRequest } from '../models/request.model';
 import * as movies from '../actions/movies.action';
 
 export interface State {
@@ -26,27 +28,30 @@ export function reducer(state = initialState, action: movies.Actions): State {
     switch (action.type) {
 
         case movies.LOAD: {
-            const page = action.payload;
+            const request = action.payload;
 
             return Object.assign({}, state, {
                 loading: true,
-                page: page == null ? state.page : page
+                page: request.page == null ? state.page : request.page
             });
         }
         case movies.SEARCH: {
+            const request = action.payload;
 
             return Object.assign({}, state, {
-                searching: true
+                searching: true,
+                loading: true,
+                page: request.page == null ? state.page : request.page
             });
         }
         case movies.LOAD_SUCCESS: {
-            const movies = action.payload;
+            const result = action.payload;
 
             return Object.assign({}, state, {
                 loaded: true,
                 loading: false,
-                entities: movies,
-                count: movies.length
+                entities: result.entities,
+                count: result.count
             });
         }
         case movies.LOAD_FAILURE: {
@@ -58,12 +63,14 @@ export function reducer(state = initialState, action: movies.Actions): State {
             });
         }
         case movies.SEARCH_COMPLETE: {
-            const movies = action.payload;
+            const result = action.payload;
 
             return Object.assign({}, state, {
-                entities: movies,
-                count: movies.length,
-                page: 1
+                entities: result.entities,
+                count: result.count,
+                page: 1,
+                searching: false,
+                loading: false,
             });
         }
         case movies.SELECT: {

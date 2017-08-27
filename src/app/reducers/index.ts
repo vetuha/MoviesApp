@@ -43,6 +43,7 @@ export const getFilterState = (state: State) => state.filter;
 
 export const getCurrentGenre = createSelector(getFilterState, fromFilter.getCurrentGenre);
 export const getMinRating = createSelector(getFilterState, fromFilter.getMinRating);
+export const getSearchTerm = createSelector(getFilterState, fromFilter.getSearchTerm);
 
 /**
  * Movie details Reducers

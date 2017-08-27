@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    <button class="navbar-toggler pull-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
-          <span>Menu</span>
-        </button>
+          <i class="fa fa-gear fa-lg text-primary"></i>
+</button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="btn-group" role="group" aria-label="Table view">
-            <button type="button" class="btn btn-primary-outline" [ngClass]="{'active':tableView === tableState.List}" (click)="onViewChanged.emit(tableState.List)">List</button>
-            <button type="button" class="btn btn-primary-outline" [ngClass]="{'active':tableView === tableState.Thumbnail}" (click)="onViewChanged.emit(tableState.Thumbnail)">Thumbnail</button>
+            <button type="button" class="btn btn-primary-outline" [ngClass]="{'active':tableView === tableState.List}" (click)="changeTableView(tableState.List)">List</button>
+            <button type="button" class="btn btn-primary-outline" [ngClass]="{'active':tableView === tableState.Thumbnail}" (click)="changeTableView(tableState.Thumbnail)">Thumbnail</button>
         </div>
         <div class="btn-group pull-right">
             <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="onPageChanged.emit($event)" [maxSize]="20" [disabled]="loading"></ngb-pagination>

@@ -216,17 +216,36 @@ body {
   background-color: #868e96;
 }
 
+.badge-danger {
+  background-color: #dc3545;
+}
+
 .pagination {
 margin: 0px !important;
 }
 
+.c-pointer {
+  cursor: pointer;
+}
+
 .details-page {
+  color: white;
   li {
     list-style: none;
     margin-bottom:10px;
   }
   i{
     margin-right: 10px;
+  }
+  .badge {
+    margin-right: 2px;
+  }  
+  .image{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -237,81 +256,5 @@ margin: 0px !important;
 
   .badge {
     margin-right: 2px;
-  }
-
+  }  
 }
-
-/*Radio styles*/
-.funkyradio {  
-      div {
-          clear: both;
-          overflow: hidden;
-      }  
-      label {
-          width: 100%;
-          border-radius: 3px;
-          border: 1px solid #D1D3D4;
-          font-weight: normal;
-      }  
-      input[type="radio"] {
-  
-          &:empty {
-              display: none;
-  
-              ~ label {
-                  position: relative;
-                  line-height: 2.5em;
-                  text-indent: 3.25em;
-                  margin-top: 2em;
-                  cursor: pointer;
-                  user-select: none;
-  
-                  &:before {
-                      position: absolute;
-                      display: block;
-                      top: 0;
-                      bottom: 0;
-                      left: 0;
-                      content: '';
-                      width: 2.5em;
-                      background: #D1D3D4;
-                      border-radius: 3px 0 0 3px;
-                  }
-              }
-          }
-  
-          &:hover:not(:checked) ~ label {
-              color: #888;
-  
-              &:before {
-                  content: '\2714';
-                  text-indent: .9em;
-                  color: #C2C2C2;
-              }
-          }
-  
-          &:checked ~ label {
-              color: #777;
-  
-              &:before {
-                  content: '\2714';
-                  text-indent: .9em;
-                  color: #333;
-                  background-color: #ccc;
-              }
-          }
-  
-          &:focus ~ label:before {
-              box-shadow: 0 0 0 3px #999;
-          }
-      }
-  
-      &-primary {
-          input[type="radio"] {
-              &:checked ~ label:before {
-                  color: #fff;
-                  background-color: #337ab7;
-              }
-          }
-      }
-  }

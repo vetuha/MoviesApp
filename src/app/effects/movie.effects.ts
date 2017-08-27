@@ -22,8 +22,9 @@ export class MovieEffects {
 
     @Effect()
     loadMovies$ = this._actions.ofType(movies.LOAD)
-        .switchMap(() => this._service.getMovies()
-            .map((movies) => new LoadSuccessAction(movies)))
+        .map(toPayload)
+        .switchMap((req) => this._service.getMovies(req)
+            .map((res) => new LoadSuccessAction(res)))
         .catch(() => of(new LoadFailedAction())
         );
 
@@ -31,12 +32,12 @@ export class MovieEffects {
     search$ = this._actions
         .ofType(movies.SEARCH)
         .map(toPayload)
-        .switchMap(query => {
-            if (query === '') {
+        .switchMap(req => {
+            if (req.query === '') {
                 return empty();
             }
-            return this._service.searchMovies(query)
-                .map((movies) => new SearchCompleteAction(movies))
+            return this._service.searchMovies(req)
+                .map((res) => new SearchCompleteAction(res))
         })
-        .catch(() => of(new SearchCompleteAction([])));
+        .catch(() => of(new SearchCompleteAction({entities:[], count:0})));
 }

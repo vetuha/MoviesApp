@@ -11,7 +11,7 @@
         <tr *ngFor="let movie of movies" >
             <td><a [routerLink]="['/movie', movie.id]">{{movie.name}}</a></td>
             <td>
-                <span *ngFor="let genre of movie.genres" class="badge badge-secondary">{{genre}}</span>
+                <span *ngFor="let genre of movie.genres" class="badge badge-default badge-pill">{{genre}}</span>
             </td>
             <td>{{movie.length | movieLength}}</td>
             <td>{{movie.rate}}</td>
