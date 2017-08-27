@@ -62,7 +62,7 @@ export class CollectionPageComponent implements OnInit {
     searchMovie(query: string) {
         if (query && query.trim()) {
             let filters: MovieFilters = new MovieFilters();
-            filters.query = query;
+            filters.query = query.trim();
             this.store.dispatch(new filter.ApplyFiltersAction(filters));
             this.loadMovies();
         }
