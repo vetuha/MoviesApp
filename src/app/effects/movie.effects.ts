@@ -6,12 +6,12 @@ import { of } from 'rxjs/observable/of';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from "@angular/core";
-import * as movies from "../actions/movie.action";
+import * as movies from "../actions/movies.action";
 import { Actions, Effect, toPayload } from "@ngrx/effects";
 import { MovieService } from "../services/movie.service";
-import { LoadFailedAction } from "../actions/movie.action";
-import { LoadSuccessAction } from "../actions/movie.action";
-import { SearchCompleteAction } from "../actions/movie.action";
+import { LoadFailedAction } from "../actions/movies.action";
+import { LoadSuccessAction } from "../actions/movies.action";
+import { SearchCompleteAction } from "../actions/movies.action";
 
 @Injectable()
 export class MovieEffects {

@@ -1,33 +1,24 @@
 import { Action } from '@ngrx/store';
 
-export const CHANGE_RATING = '[Filter] Change rating';
-export const CHANGE_MAXLENGTH = '[Filter] Chane max length';
-export const CHANGE_GENRE = '[Filter] Change genre';
+export const APPLY_FILTERS = '[Filter] Apply filters';
+export const RESET_RATE_FILTER = '[Filter] Reset rate filter';
 export const RESET_ALL = '[Filter] Reset all';
 
-export class ChangeRatingAction implements Action {
-    readonly type = CHANGE_RATING;
-
-    constructor(public payload: number) { }
-}
-
-export class ChangeMaxLengthAction implements Action {
-  readonly type = CHANGE_MAXLENGTH;
-
-  constructor(public payload: number) { }
-}
-
-export class ChangeGenreAction implements Action {
-  readonly type = CHANGE_GENRE;
+export class ApplyFiltersAction implements Action {
+  readonly type = APPLY_FILTERS;
 
   constructor(public payload: any) { }
 }
+
+export class ResetRateFilterAction implements Action {
+  readonly type = RESET_RATE_FILTER;
+}
+
 
 export class ResetAllFiltersAction implements Action {
   readonly type = RESET_ALL;
 }
 
-export type Actions = ChangeRatingAction 
-| ChangeMaxLengthAction
-| ChangeGenreAction
-| ResetAllFiltersAction;
+export type Actions = ApplyFiltersAction
+  | ResetRateFilterAction
+  | ResetAllFiltersAction;

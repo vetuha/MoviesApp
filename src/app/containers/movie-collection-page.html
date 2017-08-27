@@ -7,12 +7,14 @@
     <div class="page-header">
         <h1>Movies Collection</h1>
     </div>
-    <table-top-menu [count]="moviesCount$ | async" [page]="moviesPage$ | async" [loading]="moviesLoading$ | async" [tableView]="tableView$ | async" (onPageChanged)="onMoviesPageChanged($event)"></table-top-menu>
-    <!--<div [ngSwitch]="tableView$ | async">
-        <movie-table-list *ngSwitchCase="tableView$ == tableState.List" [movies]="movies$ | async"></movie-table-list>
-        <movie-table-tile *ngSwitchCase="tableView$ == tableState.Thumbnail" [movies]="movies$ | async"></movie-table-tile>
-    </div>-->
+    <table-top-menu [count]="moviesCount$ | async" [page]="moviesPage$ | async" [loading]="moviesLoading$ | async" [tableView]="tableView$ | async"
+        (onPageChanged)="onMoviesPageChanged($event)" (onViewChanged)="changeTableView($event)"></table-top-menu>
+    
     <div class="container">
-    <movie-table-tile  [movies]="movies$ | async"></movie-table-tile>
+        <div [ngSwitch]="tableView$ | async">
+            <movie-table-list *ngSwitchCase="tableState.List" [movies]="movies$ | async" class="table-list"></movie-table-list>
+            <movie-table-tile *ngSwitchCase="tableState.Thumbnail" [movies]="movies$ | async"></movie-table-tile>
+        </div>        <!-- <movie-table-tile [movies]="movies$ | async"></movie-table-tile> -->
+
     </div>
 </main>

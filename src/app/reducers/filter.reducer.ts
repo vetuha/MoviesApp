@@ -1,36 +1,33 @@
 import * as filter from '../actions/filter.action';
 import { GenreType } from "../models/genre.model";
+import { genreType } from "../models/genre.model";
+
+export interface MovieFilters{
+    minRate: number;
+    selectedGenre: GenreType;    
+}
 
 export interface State {
     minRating: number;
-    maxLength: number;
     currentGenre: GenreType;
-    filtered: boolean;
 }
 
 const initialState: State = {
     minRating: 5,
-    maxLength: 60,
-    currentGenre: null,
-    filtered: false
+    currentGenre: genreType.all
 };
 
 export function reducer(state = initialState, action: filter.Actions): State {
     switch (action.type) {
-        case filter.CHANGE_RATING:
-            const rating = action.payload;
+        case filter.APPLY_FILTERS:
+            const filters = action.payload;
+            return {
+                minRating: filters.minRate,
+                currentGenre: filters.selectedGenre
+            }
+        case filter.RESET_RATE_FILTER:
             return Object.assign({}, state, {
-                minRating: rating
-            });
-        case filter.CHANGE_MAXLENGTH:
-            const maxLen = action.payload;
-            return Object.assign({}, state, {
-                maxLength: maxLen
-            });
-        case filter.CHANGE_GENRE:
-            const genre = <GenreType>action.payload;
-            return Object.assign({}, state, {
-                currentGenre: genre
+                minRating: initialState.minRating
             });
         case filter.RESET_ALL:
             return Object.assign({}, initialState);
@@ -40,6 +37,4 @@ export function reducer(state = initialState, action: filter.Actions): State {
 }
 
 export const getMinRating = (state: State) => state.minRating;
-export const getMaxLength = (state: State) => state.maxLength;
 export const getCurrentGenre = (state: State) => state.currentGenre;
-export const getFiltersState = (state: State) => state.filtered;

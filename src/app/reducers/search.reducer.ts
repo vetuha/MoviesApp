@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 import { Movie } from '../models/movie.model';
-import * as movie from '../actions/movie.action';
+import * as movie from '../actions/movies.action';
 
 export interface State {
     ids: number[];

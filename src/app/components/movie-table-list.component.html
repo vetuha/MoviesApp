@@ -1,4 +1,4 @@
-<table class="table table-hover table-inverse">
+<table class="table table-striped table-inverse">
     <thead>
         <tr>
             <th>Name</th>
@@ -8,10 +8,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let movie of movies" [routerLink]="['/movie', movie.id]">
-            <td>{{movie.name}}</td>
+        <tr *ngFor="let movie of movies" >
+            <td><a [routerLink]="['/movie', movie.id]">{{movie.name}}</a></td>
             <td>
-                <span *ngFor="let genre of movie.genres" class="badge badge-default">{{genre}}</span>
+                <span *ngFor="let genre of movie.genres" class="badge badge-secondary">{{genre}}</span>
             </td>
             <td>{{movie.length | movieLength}}</td>
             <td>{{movie.rate}}</td>

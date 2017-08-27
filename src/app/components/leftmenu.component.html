@@ -14,15 +14,21 @@
     </div>
     <a href="#menu2" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-filter"></i> <span class="hidden-sm-down">Filters</span></a>
     <div class="collapse" id="menu2">
-        <div class="input-group" data-parent="#menu2">
-            <span class="input-group-addon">{{rate}}</span>
-            <input class="form-control" #rateSelector data-parent="#menu2" type="range" min="5" max="10" step="0.1" [(ngModel)]="rate" />
+        <!-- <a href="#menu2sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false" data-parent="#menu2"><i class="fa fa-star"></i> Rating</a>
+        <div class="input-group collapse list-group-item" id="menu2sub1">
+            <span class="input-group-addon"> > {{rate}}</span>
+            <input class="form-control" #rateSelector data-parent="#menu2" type="range" min="5" max="10" step="0.1" [(ngModel)]="rate"
+            />
             <span class="input-group-btn">
-                 <button class="btn btn-secondary" type="button"><i class="fa fa-check"></i></button>
-                 <button class="btn btn-secondary" type="button"><i class="fa fa-remove"></i></button>
+                <button class="btn btn-secondary" type="button"><i class="fa fa-check"></i></button>
+                <button class="btn btn-secondary" type="button"><i class="fa fa-remove"></i></button>
             </span>
+        </div> -->
+        <a href="#menu2sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Genres</a>
+        <div class="collapse" id="menu2sub2">
+            <a class="list-group-item">
+                <button *ngFor="let genre of allGenres | keys" type="button" (click)="filterGenre(genre)" class="btn btn-primary-outline btn-block" [ngClass]="{'active':(selectedGenre$ | async) == genre.value}">{{genre.value}}</button>
+             </a>
         </div>
-        <a href="#" class="list-group-item" data-parent="#menu2">2.1</a>
-        <a href="#" class="list-group-item" data-parent="#menu2"><i class="fa fa-star"></i> 2.2</a>
     </div>
 </div>

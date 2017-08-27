@@ -1,7 +1,6 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import {TableState} from '../actions/table.action';
 
-
 @Component({
     selector: 'table-top-menu',
     templateUrl: './topmenu.component.html',
@@ -9,6 +8,7 @@ import {TableState} from '../actions/table.action';
 })
 export class TopMenuComponent {
     tableState = TableState;
+    
     @Input() count: number;
     @Input() page: number;
     @Input() loading: boolean;

@@ -1,21 +1,24 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import * as fromMovies from './movie.reducer';
+import * as fromMovies from './movies.reducer';
 import * as fromSearch from './search.reducer';
 import * as fromTable from './table.reducer';
 import * as fromFilter from './filter.reducer';
+import * as fromDetails from './movie-detail.reducer';
 
 export interface State {
   search: fromSearch.State;
   movies: fromMovies.State;
   table: fromTable.State;
-  filter: fromFilter.State
+  filter: fromFilter.State;
+  details: fromDetails.State
 }
 
 export const reducers = {
   search: fromSearch.reducer,
   movies: fromMovies.reducer,
   table: fromTable.reducer,
-  filter: fromFilter.reducer
+  filter: fromFilter.reducer,
+  details: fromDetails.reducer
 };
 
 
@@ -32,14 +35,21 @@ export const getMoviesLoadingState = createSelector(getMoviesState, fromMovies.g
 export const getTableState = (state: State) => state.table;
 
 export const getTableView = createSelector(getTableState, fromTable.getTableView);
-export const getSideLockState = createSelector(getTableState, fromTable.getSideLockState);
 
 /**
- * Table Reducers
+ * Filter Reducers
  */
 export const getFilterState = (state: State) => state.filter;
 
 export const getCurrentGenre = createSelector(getFilterState, fromFilter.getCurrentGenre);
-export const getMaxLength = createSelector(getFilterState, fromFilter.getMaxLength);
 export const getMinRating = createSelector(getFilterState, fromFilter.getMinRating);
-export const getFiltersState = createSelector(getFilterState, fromFilter.getFiltersState);
+
+/**
+ * Movie details Reducers
+ */
+export const getMovieDetailsState = (state: State) => state.details;
+
+export const getMovieDetailsEntities = createSelector(getMovieDetailsState, fromDetails.getEntities);
+export const getMovieDetailsIds = createSelector(getMovieDetailsState, fromDetails.getIds);
+export const getSelectedMovieId = createSelector(getMovieDetailsState, fromDetails.getSelectedId);
+export const getSelectedMovie = createSelector(getMovieDetailsState, fromDetails.getSelected);

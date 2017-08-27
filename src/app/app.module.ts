@@ -14,8 +14,11 @@ import { AppComponent } from './containers/app';
 import { ComponentsModule } from './components/index.module';
 import { CollectionPageComponent } from './containers/movies-collection-page';
 import { NotFoundPageComponent } from './containers/not-found-page';
+import { MovieDetailPageComponent } from './containers/movie-detail-page';
 import { MovieService } from './services/movie.service';
 import { MovieEffects } from './effects/movie.effects';
+
+import { MovieExistsGuard } from './guards/movie-exists.guard';
 
 import { reducers } from './reducers/index';
 import { routes } from './routes';
@@ -27,16 +30,17 @@ import { routes } from './routes';
     ComponentsModule,
     CommonModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    RouterModule.forRoot(routes, { useHash: false }),
+    RouterModule.forRoot(routes, { useHash: true }),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([MovieEffects])
   ],
   declarations: [
     AppComponent,
     CollectionPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    MovieDetailPageComponent
   ],
-  providers: [MovieService],
+  providers: [MovieService, MovieExistsGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

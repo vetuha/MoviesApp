@@ -4,12 +4,10 @@ import {TableState} from '../actions/table.action';
 
 export interface State {
   tableView: TableState;
-  leftNavVisible: boolean;
 }
 
 const initialState: State = {
-  tableView: TableState.Thumbnail,
-  leftNavVisible: true
+  tableView: TableState.Thumbnail
 };
 
 export function reducer(state = initialState, action: layout.Actions): State {
@@ -19,15 +17,9 @@ export function reducer(state = initialState, action: layout.Actions): State {
       return Object.assign({}, state, {
         tableView: view
       });
-    case layout.TOOGLE_SIDELOCK:
-      return {
-        tableView: state.tableView,
-        leftNavVisible: !state.leftNavVisible
-      };
     default:
       return state;
   }
 }
 
 export const getTableView = (state: State) => state.tableView;
-export const getSideLockState = (state: State) => state.leftNavVisible;

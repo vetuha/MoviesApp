@@ -6,7 +6,6 @@ export enum TableState {
 }
 
 export const CHANGE_VIEW = '[Table] Change View';
-export const TOOGLE_SIDELOCK = '[Table] Toogle sidelock';
 
 export class ChangeViewAction implements Action {
     readonly type = CHANGE_VIEW;
@@ -14,8 +13,4 @@ export class ChangeViewAction implements Action {
     constructor(public payload: TableState) { }
 }
 
-export class ToogleSidelockAction implements Action {
-  readonly type = TOOGLE_SIDELOCK;
-}
-
-export type Actions = ChangeViewAction | ToogleSidelockAction;
+export type Actions = ChangeViewAction;

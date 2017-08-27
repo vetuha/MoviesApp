@@ -1,10 +1,10 @@
-<li class="item c-article-tile col-md-11">
+<li class="item c-article-tile">
     <article class="t-sass" itemscope itemtype="http://schema.org/Article">
         <div class="header">
             <a [routerLink]="['/movie', id]" class="movie-name">
             {{title}}
             </a>
-            <a class="rating">{{rate}}<i class="fa fa-star"></i></a>
+            <p class="rating"><i class="fa fa-star"></i> {{rate}}</p>
         </div>
 
         <div class="body">

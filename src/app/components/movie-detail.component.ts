@@ -4,11 +4,13 @@ import { Movie } from '../models/movie.model';
 
 @Component({
     selector: 'movie-detail',
-    template: ``,
+    templateUrl: './movie-detail.component.html',
     styles: []
 })
 export class MovieDetailComponent {
     @Input() movie: Movie;
+
+    private imgPath = '../assets/movie-covers/';
 
     get id() {
         return this.movie.id;
@@ -23,14 +25,14 @@ export class MovieDetailComponent {
     }
 
     get thumbnail() {
-        return this.movie.img;
+        return this.imgPath + this.movie.img;
     }
 
     get rate() {
         return this.movie.rate;
     }
 
-    get movieLength() {
+    get length() {
         return this.movie.length;
     }
 

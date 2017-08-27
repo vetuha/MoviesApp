@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import * as fromRoot from '../reducers/index';
-import * as movies from '../actions/movie.action';
+import * as movies from '../actions/movies.action';
 import * as filter from '../actions/filter.action';
 import * as table from '../actions/table.action';
 import {TableState} from '../actions/table.action';
@@ -41,6 +41,7 @@ export class CollectionPageComponent implements OnInit {
     }
 
     searchMovie(query: string) {
+        this.resetFilters();
         this.store.dispatch(new movies.SearchAction(query));
     }
 
