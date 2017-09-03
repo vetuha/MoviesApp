@@ -34,10 +34,7 @@ export class MovieExistsGuard implements CanActivate {
       .map(movieDetails => new details.LoadAction(movieDetails))
       .do((action: details.LoadAction) => this.store.dispatch(action))
       .map(movie => !!movie)
-      .catch(() => {
-        this.router.navigate(['/404']);
-        return of(false);
-      });
+      .catch(() => this.navigateToError());
   }
 
   hasMovie(id: number): Observable<boolean> {
@@ -52,6 +49,12 @@ export class MovieExistsGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-    return this.hasMovie(route.params['id'])
+    let id = route.params['id'];
+    return /^\d+$/.test(id) ? this.hasMovie(id) : this.navigateToError();
+  }
+
+  private navigateToError():Observable<boolean>{
+    this.router.navigate(['/404']);
+    return of(false);
   }
 }

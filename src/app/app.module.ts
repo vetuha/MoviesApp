@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from "@ngrx/effects";
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -32,6 +34,8 @@ import { routes } from './routes';
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     RouterModule.forRoot(routes, { useHash: true }),
     StoreModule.forRoot(reducers),
+    StoreRouterConnectingModule,
+    StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([MovieEffects])
   ],
   declarations: [

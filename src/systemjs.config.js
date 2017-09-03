@@ -29,6 +29,8 @@
       '@ngrx/core': 'node_modules/@ngrx/core/bundles/core.umd.js',
       '@ngrx/store': 'node_modules/@ngrx/store/bundles/store.umd.js',
       '@ngrx/effects': 'node_modules/@ngrx/effects/bundles/effects.umd.js',
+      '@ngrx/router-store': 'node_modules/@ngrx/router-store/bundles/router-store.umd.js',
+      '@ngrx/store-devtools': 'node_modules/@ngrx/store-devtools/bundles/store-devtools.umd.js',
       '@ng-bootstrap/ng-bootstrap': 'node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
